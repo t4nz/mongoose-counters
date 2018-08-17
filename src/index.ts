@@ -27,10 +27,14 @@ class MongooseCounter {
   private useReference: boolean = false;
   private counterModel: Model<CounterDocument>;
 
-  constructor(mongoose: Mongoose, schema: Schema, options?: CounterOptions) {
+  constructor(mongoose: Mongoose, schema: Schema, options?: Partial<CounterOptions>) {
     this.schema = schema;
 
     const counterOptions = { ...this.options, ...options };
+    if (!counterOptions.incField) {
+      throw new Error('incField option does not null is mandatory');
+    }
+
     if (counterOptions.referenceFields === undefined) {
       counterOptions.referenceFields = [counterOptions.incField];
     } else {
@@ -198,17 +202,18 @@ class MongooseCounter {
 }
 
 /**
- * @param {Schema} schema Schema object passed by Mongoose Schema.plugin
- * @param {*} [opts] Options passed by Mongoose Schema.plugin
- * @param {Mongoose} [options.mongoose] Mongoose instance to use
- * @param {string|string[]} [opts.omit] fields to omit from diffs (ex. ['a', 'b.c.d'])
+ * Initialize
+ *
+ * @export
+ * @param {Mongoose} mongoose Instance to use
+ * @returns
  */
 export default function mongooseCounter(mongoose: Mongoose) {
   if (!(mongoose instanceof Mongoose)) {
     throw new Error('Please, pass mongoose while requiring mongoose-counters');
   }
 
-  return function(schema: Schema, options?: CounterOptions) {
+  return function(schema: Schema, options?: Partial<CounterOptions>) {
     const counter = new MongooseCounter(mongoose, schema, options);
     counter.initialize();
     return counter;
