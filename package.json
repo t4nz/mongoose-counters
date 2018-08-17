@@ -26,6 +26,7 @@
   },
   "scripts": {
     "lint": "tslint -p tsconfig.json",
+    "prepublish": "tsc -p tsconfig.json",
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {},
