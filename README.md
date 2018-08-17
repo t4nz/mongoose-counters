@@ -1,19 +1,19 @@
-mongoose-counter
+mongoose-counters
 =============
 
 This plugin create fields which autoincrement their value every time a new document is inserted in a collection.
 
-[![npm](https://img.shields.io/npm/v/mongoose-counter.svg)](https://www.npmjs.com/package/mongoose-counter)
-[![GitHub license](https://img.shields.io/github/license/t4nz/mongoose-counter.svg)](https://github.com/t4nz/mongoose-counter/blob/master/LICENSE)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5f0f54069d254079bdf9e5c71eb7debc)](https://www.codacy.com/app/t4nz/mongoose-counter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=t4nz/mongoose-counter&amp;utm_campaign=Badge_Grade)
-[![npm](https://img.shields.io/npm/dm/mongoose-counter.svg)](https://www.npmjs.com/package/mongoose-counter)
+[![npm](https://img.shields.io/npm/v/mongoose-counters.svg)](https://www.npmjs.com/package/mongoose-counters)
+[![GitHub license](https://img.shields.io/github/license/t4nz/mongoose-counters.svg)](https://github.com/t4nz/mongoose-counters/blob/master/LICENSE)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/5f0f54069d254079bdf9e5c71eb7debc)](https://www.codacy.com/app/t4nz/mongoose-counters?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=t4nz/mongoose-counters&amp;utm_campaign=Badge_Grade)
+[![npm](https://img.shields.io/npm/dm/mongoose-counters.svg)](https://www.npmjs.com/package/mongoose-counters)
 [![TypeScript](https://badges.frapsoft.com/typescript/version/typescript-next.svg?v=101)](https://github.com/ellerbrock/typescript-badges/)
 
 ## Installation
 ---------------
 ```sh
-yarn add mongoose-counter
-npm i mongoose-counter
+yarn add mongoose-counters
+npm i mongoose-counters
 ```
 
 ## Setup
@@ -29,7 +29,7 @@ Use as you would any Mongoose plugin:
 
 ```typescript
 import * as mongoose from 'mongoose';
-import mongooseCounter from 'mongoose-counter';
+import mongooseCounter from 'mongoose-counters';
 
 const counter = mongooseCounter(mongoose);
 const schema = new mongoose.Schema({ ... });

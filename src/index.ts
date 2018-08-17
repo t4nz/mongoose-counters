@@ -205,7 +205,7 @@ class MongooseCounter {
  */
 export default function mongooseCounter(mongoose: Mongoose) {
   if (!(mongoose instanceof Mongoose)) {
-    throw new Error('Please, pass mongoose while requiring mongoose-counter');
+    throw new Error('Please, pass mongoose while requiring mongoose-counters');
   }
 
   return function(schema: Schema, options?: CounterOptions) {

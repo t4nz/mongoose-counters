@@ -1,5 +1,5 @@
 {
-  "name": "mongoose-counter",
+  "name": "mongoose-counters",
   "version": "1.0.0",
   "description": "Autoincrement counter handling for mongoose",
   "keywords": [
@@ -8,13 +8,13 @@
     "autoincrement",
     "counter"
   ],
-  "homepage": "https://github.com/t4nz/mongoose-autoincrement",
+  "homepage": "https://github.com/t4nz/mongoose-counters",
   "license": "MIT",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/t4nz/mongoose-autoincrement"
+    "url": "https://github.com/t4nz/mongoose-counters"
   },
   "author": {
     "name": "Gaetano Fiorello",
