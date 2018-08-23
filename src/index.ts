@@ -26,6 +26,7 @@ class MongooseCounter {
 
   private useReference: boolean = false;
   private counterModel: Model<CounterDocument>;
+  private isNew: boolean = true;
 
   constructor(mongoose: Mongoose, schema: Schema, options?: Partial<CounterOptions>) {
     this.schema = schema;
@@ -56,9 +57,11 @@ class MongooseCounter {
   }
 
   public initialize() {
-    this.addCounterToSchema();
-    this.addStaticMethods();
-    this.addHooks();
+    if (this.isNew) {
+      this.addCounterToSchema();
+      this.addStaticMethods();
+      this.addHooks();
+    }
   }
 
   /**
@@ -72,6 +75,12 @@ class MongooseCounter {
   private createCounterModel(mongoose: Mongoose) {
     const { collectionName, id } = this.options;
     const modelName = `${collectionName.charAt(0).toUpperCase()}${collectionName.slice(1)}_${id}`;
+
+    if (mongoose.modelNames().includes(modelName)) {
+      this.isNew = false;
+      return mongoose.model<CounterDocument>(modelName);
+    }
+
     const CounterSchema = new mongoose.Schema(
       {
         id: {
@@ -137,6 +146,7 @@ class MongooseCounter {
    */
   private addStaticMethods() {
     const parent = this;
+
     this.schema.static('resetCounter', function(
       this: Model<Document>,
       id: string,
